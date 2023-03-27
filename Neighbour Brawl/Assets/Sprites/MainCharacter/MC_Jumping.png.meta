@@ -107,10 +107,10 @@ TextureImporter:
       name: MC_Jumping_0
       rect:
         serializedVersion: 2
-        x: 325
-        y: 907
-        width: 1299
-        height: 2970
+        x: 337
+        y: 1274
+        width: 1185
+        height: 2598
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,10 +128,10 @@ TextureImporter:
       name: MC_Jumping_1
       rect:
         serializedVersion: 2
-        x: 1840
-        y: 2169
-        width: 1137
-        height: 2321
+        x: 1595
+        y: 3642
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,10 +149,10 @@ TextureImporter:
       name: MC_Jumping_2
       rect:
         serializedVersion: 2
-        x: 3187
-        y: 1987
-        width: 1271
-        height: 2618
+        x: 1929
+        y: 2160
+        width: 1073
+        height: 2280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,10 +170,10 @@ TextureImporter:
       name: MC_Jumping_3
       rect:
         serializedVersion: 2
-        x: 4590
-        y: 1904
-        width: 1376
-        height: 2823
+        x: 3247
+        y: 1988
+        width: 1201
+        height: 2580
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +191,10 @@ TextureImporter:
       name: MC_Jumping_4
       rect:
         serializedVersion: 2
-        x: 1804
-        y: 34
-        width: 1255
-        height: 1970
+        x: 4683
+        y: 3139
+        width: 938
+        height: 1588
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +212,10 @@ TextureImporter:
       name: MC_Jumping_5
       rect:
         serializedVersion: 2
-        x: 3105
-        y: 10
-        width: 1373
-        height: 2013
+        x: 3118
+        y: 31
+        width: 1343
+        height: 1953
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,10 +233,10 @@ TextureImporter:
       name: MC_Jumping_6
       rect:
         serializedVersion: 2
-        x: 4568
-        y: 0
-        width: 1363
-        height: 1910
+        x: 4492
+        y: 1981
+        width: 5
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,6 +246,90 @@ TextureImporter:
       bones: []
       spriteID: 697ee113f220a1745953a5c77a35fd0f
       internalID: 1986968175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_Jumping_7
+      rect:
+        serializedVersion: 2
+        x: 4503
+        y: 1886
+        width: 1456
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89fc7ab1f6b1304da14371d789d1605
+      internalID: 484537852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_Jumping_8
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 907
+        width: 1243
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f48d7dd50c86948934681e420e6114
+      internalID: 2057042129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_Jumping_9
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 11
+        width: 1121
+        height: 1910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 854ec55571f8ff44b829803684ef672a
+      internalID: -2011889728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_Jumping_10
+      rect:
+        serializedVersion: 2
+        x: 4724
+        y: 0
+        width: 1077
+        height: 1906
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c04cd58f345d5d3429f57f1905956821
+      internalID: -267501923
       vertices: []
       indices: 
       edges: []
@@ -264,10 +348,14 @@ TextureImporter:
       MC_Jumping_0: 659099550
       MC_Jumping_2: 1963603315
       MC_Jumping_3: -1029476267
+      MC_Jumping_9: -2011889728
+      MC_Jumping_7: 484537852
       MC_Jumping_4: -306233015
+      MC_Jumping_10: -267501923
       MC_Jumping_1: 1162356501
       MC_Jumping_6: 1986968175
       MC_Jumping_5: -543715600
+      MC_Jumping_8: 2057042129
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

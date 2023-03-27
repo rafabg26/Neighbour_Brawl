@@ -52,7 +52,6 @@ public class CharacterMovement : MonoBehaviour
         }
         Vector3 pScale = Vector3.one;
         _anim.SetFloat("speed", Mathf.Abs(deltaX));
-        Debug.Log(Mathf.Abs(deltaX));
         _anim.SetBool("jumping", !grounded);
         //Esto invierte al sprite y hace que gire !!!!
         //Aproximately calcula si es mas o menos es similar a un valor
