@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BarrelDamaged : MonoBehaviour
 {
+
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,12 @@ public class BarrelDamaged : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        anim = GetComponent<Animator>();
     }
+
+    //Cuando el barril es golpeado trigerea la animación
+    public void Damaged(){
+        anim.SetTrigger("hit");
+    }
+
 }

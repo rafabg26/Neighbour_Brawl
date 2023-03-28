@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-   public float speed = 4.5f;
+    public float speed = 4.5f;
     private Rigidbody2D _body;
     private Animator _anim;
     public float jumpForce = 10.0f;
@@ -63,7 +63,13 @@ public class CharacterMovement : MonoBehaviour
         //Aproximately calcula si es mas o menos es similar a un valor
         if (!Mathf.Approximately(deltaX, 0f)) {
             transform.localScale = new Vector3(-(Mathf.Sign(deltaX)/pScale.x), 1f/pScale.y, 1f);
-        }   
+        } 
+
+        //Pegar puñetazo
+        if(Input.GetKeyDown(KeyCode.P) && grounded){
+            _anim.Play("Punch");
+        }  
     }
+
 
 }
