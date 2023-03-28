@@ -66,7 +66,7 @@ public class CharacterMovement : MonoBehaviour
         } 
 
         //Pegar puñetazo
-        if(Input.GetKeyDown(KeyCode.P) && grounded){
+        if(Input.GetKeyDown(KeyCode.X) && grounded){
             _anim.Play("Punch");
         }  
     }

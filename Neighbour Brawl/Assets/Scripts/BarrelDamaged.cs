@@ -6,6 +6,7 @@ public class BarrelDamaged : MonoBehaviour
 {
 
     private Animator anim;
+    public int barrelLife = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,16 @@ public class BarrelDamaged : MonoBehaviour
     void Update()
     {
         anim = GetComponent<Animator>();
+        Debug.Log(barrelLife);
+        if(barrelLife <= 0){
+            anim.SetBool("dead" , true);
+        }
     }
 
     //Cuando el barril es golpeado trigerea la animación
     public void Damaged(){
         anim.SetTrigger("hit");
+        barrelLife -= 10; 
     }
 
 }
