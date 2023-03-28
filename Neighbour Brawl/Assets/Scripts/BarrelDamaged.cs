@@ -6,20 +6,18 @@ public class BarrelDamaged : MonoBehaviour
 {
 
     private Animator anim;
-    public int barrelLife = 100;
+    private SceneController controller;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void Start() {
+        controller = GameObject.Find("SceneController").GetComponent<SceneController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         anim = GetComponent<Animator>();
-        Debug.Log(barrelLife);
-        if(barrelLife <= 0){
+        if(controller.getEnemyLife() <= 0){
             anim.SetBool("dead" , true);
         }
     }
@@ -27,7 +25,7 @@ public class BarrelDamaged : MonoBehaviour
     //Cuando el barril es golpeado trigerea la animación
     public void Damaged(){
         anim.SetTrigger("hit");
-        barrelLife -= 10; 
+        if(controller.getEnemyLife()>0)  controller.DecreaseEnemyLife(10);
     }
 
 }

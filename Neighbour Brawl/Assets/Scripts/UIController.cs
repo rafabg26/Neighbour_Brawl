@@ -17,8 +17,7 @@ public class UIController : MonoBehaviour
         mainCharacterLife.transform.localScale = new Vector3(hit, 1.0f);
     }
 
-    public void SetTimer(float time){
-        Debug.Log("CULO");
-        timer.text = ""+ time.ToString("f0");
+    public void SetTimer(string text){
+        timer.text = text;
     }
 }
