@@ -23,7 +23,13 @@ public class CharacterMovement : MonoBehaviour
     public Collider2D getGroundObject{
         get {
             var (corner1, corner2) = getGroundCheckCorners();
-            return Physics2D.OverlapArea(corner1, corner2);
+            Collider2D platformCollider = Physics2D.OverlapArea(corner1, corner2);
+            if (platformCollider != null && platformCollider.CompareTag("ground")) {
+                return platformCollider;
+            }
+            else {
+                return null;
+            }
         }
     }
     public bool grounded {
