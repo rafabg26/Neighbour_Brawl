@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timer;
 
     public void DecreaseEnemyLife(int hit){
-        enemyLife.transform.localScale = new Vector3(hit, 1.0f);
+        enemyLife.rectTransform.offsetMax = new Vector2(enemyLife.rectTransform.offsetMax.x - hit*10, enemyLife.rectTransform.offsetMax.y);
     }
     public void DecreaseMCLife(int hit){
         mainCharacterLife.transform.localScale = new Vector3(hit, 1.0f);

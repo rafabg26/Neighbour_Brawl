@@ -5,7 +5,8 @@ using UnityEngine;
 public class SceneController : MonoBehaviour
 {
     private float timer = 120;
-    private int enemyLife = 100;
+    public int enemyLife = 100;
+
     public int getEnemyLife(){
         return enemyLife;
     }
@@ -30,10 +31,9 @@ public class SceneController : MonoBehaviour
     public void DecreaseEnemyLife(float damage)
     {
         enemyLife -= (int)damage;
-        if(enemyLife <= 0){
+        GameController.Instance.DecreaseEnemyLife(damage);
+        if(enemyLife <= 0)
             GameController.Instance.EndLevel("YOU WIN");
-        }else{
-            GameController.Instance.DecreaseEnemyLife(damage);
-        }
+      
     }
 }
