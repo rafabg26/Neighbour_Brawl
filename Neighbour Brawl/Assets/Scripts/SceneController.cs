@@ -6,6 +6,7 @@ public class SceneController : MonoBehaviour
 {
     private float timer = 120;
     public int enemyLife = 100;
+    public float countDownReloadLife = 5;
 
     public int getEnemyLife(){
         return enemyLife;
@@ -24,16 +25,27 @@ public class SceneController : MonoBehaviour
         {
             GameController.Instance.EndLevel("YOU LOSE");
         }else if(enemyLife > 0){
+            ReloadEnemyLife();
             GameController.Instance.SetTimer(timer);
         }
     }
 
     public void DecreaseEnemyLife(float damage)
     {
+        countDownReloadLife = 5;
         enemyLife -= (int)damage;
         GameController.Instance.DecreaseEnemyLife(damage);
         if(enemyLife <= 0)
-            GameController.Instance.EndLevel("YOU WIN");
+            //GameController.Instance.EndLevel("YOU WIN");
+            ReloadEnemyLife();
       
+    }
+
+    public void ReloadEnemyLife(){
+        countDownReloadLife -= Time.deltaTime;
+        if(countDownReloadLife <= 0){
+            enemyLife = 100;
+            GameController.Instance.ReloadEnemyLife();
+        }
     }
 }

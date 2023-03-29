@@ -17,9 +17,9 @@ public class BarrelDamaged : MonoBehaviour
     void Update()
     {
         anim = GetComponent<Animator>();
-        if(controller.getEnemyLife() <= 0){
-            anim.SetBool("dead" , true);
-        }
+        // if(controller.getEnemyLife() <= 0){
+        //     anim.SetBool("dead" , true);
+        // }
     }
 
     //Cuando el barril es golpeado trigerea la animación

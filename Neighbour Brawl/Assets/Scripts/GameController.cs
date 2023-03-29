@@ -37,6 +37,10 @@ public class GameController : Singleton<GameController>
         ui.DecreaseEnemyLife((int) v);
     }
 
+    public void ReloadEnemyLife(){
+        ui.ReloadEnemyLife();
+    }
+
     private IEnumerator pauseGame(string message, float waitSeconds ){
         ui.SetTimer(message);
         yield return new WaitForSeconds(waitSeconds);
