@@ -22,6 +22,7 @@ public class PlayerHit : MonoBehaviour
     // a la animación de la clase del barril
     private void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("barrel")){
+            
             other.GetComponent<BarrelDamaged>().Damaged();
         }
     }

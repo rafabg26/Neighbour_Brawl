@@ -23,8 +23,8 @@ public class CharacterMovement : MonoBehaviour
     public Collider2D getGroundObject{
         get {
             var (corner1, corner2) = getGroundCheckCorners();
-            Collider2D platformCollider = Physics2D.OverlapArea(corner1, corner2);
-            if (platformCollider != null && platformCollider.CompareTag("ground")) {
+            Collider2D platformCollider = Physics2D.OverlapArea(corner1, corner2, LayerMask.GetMask("Ground"));
+            if (platformCollider != null) {
                 return platformCollider;
             }
             else {
@@ -34,7 +34,7 @@ public class CharacterMovement : MonoBehaviour
     }
     public bool grounded {
         get {
-            return (getGroundObject != null);
+            return (getGroundObject != null && getGroundObject.CompareTag("ground"));
         }
     }
 
@@ -53,7 +53,7 @@ public class CharacterMovement : MonoBehaviour
         _body.velocity = movement;
         _body.gravityScale = (grounded && Mathf.Approximately(Mathf.Abs(deltaX), 0f)) ? 0 : 1;
         if (grounded && 
-            Input.GetButtonDown("Jump")) {
+            Input.GetButtonDown("Jump") && getGroundObject.gameObject.CompareTag("ground")) {
             _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
         Vector3 pScale = Vector3.one;
