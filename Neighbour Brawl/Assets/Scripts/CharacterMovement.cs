@@ -74,6 +74,12 @@ public class CharacterMovement : MonoBehaviour
         // Si el personaje está golpeando, no permite más movimientos
             _body.velocity = new Vector2(0f, _body.velocity.y);
             _body.gravityScale = 0;
+        }
+        AnimatorStateInfo stateInfo = _anim.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName("Punch") && stateInfo.normalizedTime >= 1.0f) {
+            _anim.SetBool("Punch", false);
+            isPunching = false;
+            FinishPunchAnimation();
         }  
     }
     public void FinishPunchAnimation() {
