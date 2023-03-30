@@ -3,7 +3,7 @@
  ### Participantes
  <a href="https://github.com/rafabg26">@rafabg26</a>: Rafa Benavent García
  <br/>
- <a href="https://github.com/">@</a>: Pablo Patiño Serrano
+ <a href="https://github.com/PabloPS21">@PabloPS21</a>: Pablo Patiño Serrano
  <br/>
  <a href="https://github.com/">@</a>: Francisco Muñoz Valero
  <br/>
