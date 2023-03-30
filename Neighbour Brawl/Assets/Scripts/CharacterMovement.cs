@@ -9,8 +9,8 @@ public class CharacterMovement : MonoBehaviour
     private Animator _anim;
     public float jumpForce = 10.0f;
     // Start is called before the first frame update
-
     private BoxCollider2D _box;
+    private bool isPunching = false;
 
     private (Vector2, Vector2) getGroundCheckCorners() {
         Vector3 max = _box.bounds.max;
@@ -46,8 +46,8 @@ public class CharacterMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        if (!isPunching) {
         float deltaX = Input.GetAxis("Horizontal")  * speed;
         Vector2 movement = new Vector2(deltaX, _body.velocity.y);
         _body.velocity = movement;
@@ -68,8 +68,15 @@ public class CharacterMovement : MonoBehaviour
         //Pegar puñetazo
         if(Input.GetKeyDown(KeyCode.X) && grounded){
             _anim.Play("Punch");
+            isPunching = true;
+        }
+        }else {
+        // Si el personaje está golpeando, no permite más movimientos
+            _body.velocity = new Vector2(0f, _body.velocity.y);
+            _body.gravityScale = 0;
         }  
     }
-
-
+    public void FinishPunchAnimation() {
+        isPunching = false;
+    }
 }

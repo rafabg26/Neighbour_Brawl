@@ -7,10 +7,12 @@ public class SceneController : MonoBehaviour
     private float timer = 120;
     public int enemyLife = 100;
     public float countDownReloadLife = 5;
+    public float timeSinceLastHit = 0f;
 
     public int getEnemyLife(){
         return enemyLife;
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,9 @@ public class SceneController : MonoBehaviour
         if((int) timer <= 0 )
         {
             GameController.Instance.EndLevel("YOU LOSE");
-        }else if(enemyLife > 0){
+        }
+        else
+        {
             ReloadEnemyLife();
             GameController.Instance.SetTimer(timer);
         }
@@ -35,17 +39,24 @@ public class SceneController : MonoBehaviour
         countDownReloadLife = 5;
         enemyLife -= (int)damage;
         GameController.Instance.DecreaseEnemyLife(damage);
+        timeSinceLastHit = 0f;
+
         if(enemyLife <= 0)
-            //GameController.Instance.EndLevel("YOU WIN");
+        {
             ReloadEnemyLife();
-      
+        }
     }
 
-    public void ReloadEnemyLife(){
-        countDownReloadLife -= Time.deltaTime;
-        if(countDownReloadLife <= 0){
+    public void ReloadEnemyLife()
+    {
+        timeSinceLastHit += Time.deltaTime;
+
+        // If enough time has passed since last hit, regenerate enemy's health
+        if (timeSinceLastHit >= 5f)
+        {
             enemyLife = 100;
             GameController.Instance.ReloadEnemyLife();
+            timeSinceLastHit = 0f;
         }
     }
 }
