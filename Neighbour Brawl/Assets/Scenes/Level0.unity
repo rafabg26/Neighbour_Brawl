@@ -2765,7 +2765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce0d2d8ceead7a42a95a512ca81533a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFraction: 0.4
+  parallaxFraction: 0.5
 --- !u!212 &389830621
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3843,7 +3843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce0d2d8ceead7a42a95a512ca81533a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFraction: 0.7
+  parallaxFraction: 0.8
 --- !u!212 &979545017
 SpriteRenderer:
   m_ObjectHideFlags: 0
