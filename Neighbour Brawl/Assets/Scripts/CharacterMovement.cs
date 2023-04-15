@@ -85,4 +85,5 @@ public class CharacterMovement : MonoBehaviour
     public void FinishPunchAnimation() {
         isPunching = false;
     }
+
 }
