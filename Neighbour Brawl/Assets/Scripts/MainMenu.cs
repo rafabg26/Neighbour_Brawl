@@ -7,8 +7,10 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject menu;
     public GameObject creditsMenu;
+    public GameObject splash;
     void Start(){
-        menu.SetActive(true);
+        splash.SetActive(true);
+        menu.SetActive(false);
         creditsMenu.SetActive(false);
     }
     public void Salir()
@@ -34,5 +36,9 @@ public class MainMenu : MonoBehaviour
     public void CreditosAMenu(){
         menu.SetActive(true);
         creditsMenu.SetActive(false);
+    }
+    public void SplashAMenu(){
+        menu.SetActive(true);
+        splash.SetActive(false);
     }
 }
