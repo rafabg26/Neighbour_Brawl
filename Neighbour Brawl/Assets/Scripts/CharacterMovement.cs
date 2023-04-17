@@ -56,6 +56,13 @@ public class CharacterMovement : MonoBehaviour
             Input.GetButtonDown("Jump") && getGroundObject.gameObject.CompareTag("ground")) {
             _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+
+
+        //Si dejas de pulsar la tecla de flecha izquierda para moverte el personaje se para completamente
+        /*if(Input.GetKeyUp(KeyCode.LeftArrow)){
+            _body.bodyType = RigidbodyType2D.Static;
+        }*/
+
         Vector3 pScale = Vector3.one;
         _anim.SetFloat("speed", Mathf.Abs(deltaX));
         _anim.SetBool("jumping", !grounded);
