@@ -9,8 +9,9 @@ public class Dialog : MonoBehaviour
     public string[] sentences;
     private int index;
     public float typingSpeed;
-
+    public GameObject dialogueObject;
     public GameObject continueButton;
+    public Animator textDisplayAnim;
 
     void Start(){
         StartCoroutine(Type());
@@ -33,6 +34,7 @@ public class Dialog : MonoBehaviour
     }
 
     public void NextSentence(){
+        textDisplayAnim.SetTrigger("NextLine");
         continueButton.SetActive(false);
         if(index < sentences.Length - 1){
             index++;
@@ -40,6 +42,7 @@ public class Dialog : MonoBehaviour
             StartCoroutine(Type());
         }else{
             textDisplay.text = "";
+            Destroy(dialogueObject);
         }
     }
 }
