@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrelDamaged : MonoBehaviour
+public class EnemyDamaged : MonoBehaviour
 {
 
     private Animator anim;

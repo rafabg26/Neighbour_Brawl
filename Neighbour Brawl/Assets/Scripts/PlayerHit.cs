@@ -21,9 +21,8 @@ public class PlayerHit : MonoBehaviour
     //Cuando el puño entre en contacto con otro objeto comprobamos que se trata del barril por la tag, si es así se llama
     // a la animación de la clase del barril
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("barrel")){
-            
-            other.GetComponent<BarrelDamaged>().Damaged();
+        if(other.gameObject.layer == LayerMask.NameToLayer("Enemies")){
+            other.GetComponent<EnemyDamaged>().Damaged();
         }
     }
 }
