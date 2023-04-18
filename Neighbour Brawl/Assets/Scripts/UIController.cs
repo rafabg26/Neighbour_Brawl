@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] private RawImage enemyLife;
     [SerializeField] private RawImage mainCharacterLife;
-    [SerializeField] private TextMeshProUGUI timer;
+    [SerializeField] private Text timer;
     private float maxLife;
 
     public void DecreaseEnemyLife(int hit){
