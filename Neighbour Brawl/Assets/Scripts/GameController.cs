@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController>
 {
-    private UIController ui;
 
     private bool _paused;
     public bool paused {
@@ -17,38 +16,19 @@ public class GameController : Singleton<GameController>
         }
     }
 
-    private void Start(){
-        ui = GetComponent<UIController>();
-    }
-
-    public void SetTimer( float v){
-
-        ui.SetTimer(v.ToString("f0"));
-        
-    }
-
     public void EndLevel(string message){
-            ui.SetTimer(message);
             StartCoroutine(pauseGame(message, 3.0f));
     }
 
-    public void DecreaseEnemyLife(float v){
-        ui.DecreaseEnemyLife((int) v);
-    }
 
-    public void DecreaseMCLife(float v){
-        ui.DecreaseMCLife((int) v);
-    }
-
-
-    public void ReloadEnemyLife(){
-        if(SceneManager.GetActiveScene().name == "Level0"){
-            ui.ReloadEnemyLife();
-        }
-    }
+    // public void ReloadEnemyLife(){
+    //     if(SceneManager.GetActiveScene().name == "Level0"){
+    //         ui.ReloadEnemyLife();
+    //     }
+    // }
 
     private IEnumerator pauseGame(string message, float waitSeconds ){
-        ui.SetTimer(message);
+        //ui.SetTimer(message);
         yield return new WaitForSeconds(waitSeconds);
         Quit();
     }

@@ -9,6 +9,8 @@ public class EnemyDamaged : MonoBehaviour
     private Animator anim;
     private SceneController controller;
     public Transform player;
+    public HealthBar healthBar;
+    public int maxHealth = 100;
     public float moveSpeed = 5f;
     public float attackRange = 2f;
     public float attackDamage = 10f;
@@ -16,6 +18,7 @@ public class EnemyDamaged : MonoBehaviour
     public float knockbackDistance = 2f;
     public float knockbackDuration = 1f;
 
+    private int currentHealth;
     private bool isAttacking = false;
     private float nextAttackTime = 0f;
     private bool isKnockedBack = false;
@@ -23,10 +26,14 @@ public class EnemyDamaged : MonoBehaviour
     private Vector3 knockbackDirection = Vector3.zero;
     private float knockbackEndTime = 0f;
 
+
+
+
     // Start is called before the first frame update
     public void Start()
     {
-        controller = GameObject.Find("SceneController").GetComponent<SceneController>();
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
     }
 
@@ -52,7 +59,8 @@ public class EnemyDamaged : MonoBehaviour
                 isAttacking = true;
                 anim.SetBool("attacking", true);
                 Invoke(nameof(ResetAttack), 0.5f);
-                if (controller.getMCLife() > 0) { controller.DecreaseMCLife(attackDamage); }
+                //HAY QUE REFACTORIZAR
+                //if (controller.getMCLife() > 0) { controller.DecreaseMCLife(attackDamage); }
 
                 isKnockedBack = true;
                 knockbackEndTime = Time.time + knockbackDuration;
@@ -93,7 +101,12 @@ public class EnemyDamaged : MonoBehaviour
 
     public void Damaged(){
         anim.SetTrigger("hit");
-        if(controller.getEnemyLife()>0)  controller.DecreaseEnemyLife(10);
+        if(currentHealth>0) {
+            currentHealth -= 10;
+            healthBar.SetHealth(currentHealth);
+        }else{
+            GameController.Instance.EndLevel("YOU WIN");
+        };
     }
 }
 

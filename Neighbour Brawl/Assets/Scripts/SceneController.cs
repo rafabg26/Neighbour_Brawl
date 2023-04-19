@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    private float timer = 120;
     public int enemyLife = 100;
     public int mCLife = 100;
     public float countDownReloadLife = 5;
@@ -29,47 +28,47 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if((int) timer <= 0 )
-        {
-            GameController.Instance.EndLevel("YOU LOSE");
-        }
-        else
-        {
-            ReloadEnemyLife();
-            GameController.Instance.SetTimer(timer);
-        }
+        // timer -= Time.deltaTime;
+        // if((int) timer <= 0 )
+        // {
+        //     GameController.Instance.EndLevel("YOU LOSE");
+        // }
+        // else
+        // {
+        //     ReloadEnemyLife();
+        //     GameController.Instance.SetTimer(timer);
+        // }
 
         if(sceneChanged){
             enemyLife = 100;
         }
     }
 
-    public void DecreaseEnemyLife(float damage)
-    {
-        countDownReloadLife = 5;
-        enemyLife -= (int)damage;
-        GameController.Instance.DecreaseEnemyLife(damage);
-        timeSinceLastHit = 0f;
+    // public void DecreaseEnemyLife(float damage)
+    // {
+    //     countDownReloadLife = 5;
+    //     enemyLife -= (int)damage;
+    //     GameController.Instance.DecreaseEnemyLife(damage);
+    //     timeSinceLastHit = 0f;
 
-        if(enemyLife <= 0 && SceneManager.GetActiveScene().name == "Level0")
-        {
-            ReloadEnemyLife();
-        }
-    }
+    //     if(enemyLife <= 0 && SceneManager.GetActiveScene().name == "Level0")
+    //     {
+    //         ReloadEnemyLife();
+    //     }
+    // }
 
-    public void DecreaseMCLife(float damage)
-    {
-        countDownReloadLife = 5;
-        mCLife -= (int)damage;
-        GameController.Instance.DecreaseMCLife(damage);
-        timeSinceLastHit = 0f;
+    // public void DecreaseMCLife(float damage)
+    // {
+    //     countDownReloadLife = 5;
+    //     mCLife -= (int)damage;
+    //     GameController.Instance.DecreaseMCLife(damage);
+    //     timeSinceLastHit = 0f;
 
-        if(mCLife <= 0)
-        {
-            //derrota
-        }
-    }
+    //     if(mCLife <= 0)
+    //     {
+    //         //derrota
+    //     }
+    // }
 
     public void ReloadEnemyLife()
     {
@@ -79,7 +78,7 @@ public class SceneController : MonoBehaviour
         if (timeSinceLastHit >= 5f)
         {
             enemyLife = 100;
-            GameController.Instance.ReloadEnemyLife();
+            //GameController.Instance.ReloadEnemyLife();
             timeSinceLastHit = 0f;
         }
     }
