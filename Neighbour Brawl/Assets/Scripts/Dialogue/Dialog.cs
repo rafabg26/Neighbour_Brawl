@@ -13,11 +13,21 @@ public class Dialog : MonoBehaviour
     public GameObject continueButton;
     public Animator textDisplayAnim;
 
+    public GameObject protagonist;
+    public GameObject granny;
+
     void Start(){
         StartCoroutine(Type());
     }
 
     void Update() {
+
+        protagonist = GameObject.Find("MainCharacter");
+        granny = GameObject.Find("Granny");
+
+        protagonist.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        granny.GetComponent<EnemyDamaged>().enabled = false;
+
         if(textDisplay.text == sentences[index]){
             continueButton.SetActive(true);
         }   
@@ -43,6 +53,10 @@ public class Dialog : MonoBehaviour
         }else{
             textDisplay.text = "";
             Destroy(dialogueObject);
+
+            protagonist.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            granny.GetComponent<EnemyDamaged>().enabled = true;
+
         }
     }
 }
