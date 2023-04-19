@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameController : Singleton<GameController>
 {
 
+    public Timer label;
     private bool _paused;
     public bool paused {
         get { return _paused; }
@@ -17,7 +18,8 @@ public class GameController : Singleton<GameController>
     }
 
     public void EndLevel(string message){
-            StartCoroutine(pauseGame(message, 3.0f));
+        Debug.Log("LO HAS MATAO");
+        StartCoroutine(pauseGame(message, 3.0f));
     }
 
 
@@ -28,7 +30,7 @@ public class GameController : Singleton<GameController>
     // }
 
     private IEnumerator pauseGame(string message, float waitSeconds ){
-        //ui.SetTimer(message);
+        label.SetEndMessage(message);
         yield return new WaitForSeconds(waitSeconds);
         Quit();
     }

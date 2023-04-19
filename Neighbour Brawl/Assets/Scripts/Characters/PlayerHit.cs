@@ -22,7 +22,7 @@ public class PlayerHit : MonoBehaviour
     // a la animación de la clase del barril
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.layer == LayerMask.NameToLayer("Enemies")){
-            other.GetComponent<EnemyDamaged>().Damaged();
+            other.GetComponent<EnemyDamaged>().Damaged(10);
         }
     }
 }

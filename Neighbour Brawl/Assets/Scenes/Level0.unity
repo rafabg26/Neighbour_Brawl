@@ -400,7 +400,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88979034}
-  - component: {fileID: 88979033}
   - component: {fileID: 88979032}
   m_Layer: 0
   m_Name: GameController
@@ -421,20 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418a5dd7156258d40bdb441418a7ce3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &88979033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 88979031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7285aaf94f853242a02f868b2bcf0f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: {fileID: 0}
-  time: 240
+  label: {fileID: 0}
 --- !u!4 &88979034
 Transform:
   m_ObjectHideFlags: 0

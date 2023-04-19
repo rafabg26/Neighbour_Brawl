@@ -17,8 +17,11 @@ public class EnemyDamaged : MonoBehaviour
     public float attackCooldown = 1f;
     public float knockbackDistance = 2f;
     public float knockbackDuration = 1f;
+    public int maxRegenerationSpan = 5;
+    public bool canRegenerate = false;
 
     private int currentHealth;
+    private int regenerationSpan;
     private bool isAttacking = false;
     private float nextAttackTime = 0f;
     private bool isKnockedBack = false;
@@ -32,6 +35,7 @@ public class EnemyDamaged : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        regenerationSpan = maxRegenerationSpan;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
@@ -41,7 +45,7 @@ public class EnemyDamaged : MonoBehaviour
     void Update()
     {
         anim = GetComponent<Animator>();
-
+        if(canRegenerate) Regenerate();
         if (SceneManager.GetActiveScene().name != "Level0")
         {
             float distance = Vector3.Distance(transform.position, player.position);
@@ -99,14 +103,29 @@ public class EnemyDamaged : MonoBehaviour
         anim.SetBool("attacking", false);
     }
 
-    public void Damaged(){
+    public void Damaged(int damage){
         anim.SetTrigger("hit");
-        if(currentHealth>0) {
-            currentHealth -= 10;
-            healthBar.SetHealth(currentHealth);
-        }else{
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        if((int)currentHealth <= 0) {
             GameController.Instance.EndLevel("YOU WIN");
         };
+    }
+
+    private void  Regenerate(){
+        regenerationSpan -= (int)Time.deltaTime;;
+        if(regenerationSpan <= 0){
+            regenerationSpan = maxRegenerationSpan;
+            Heal(maxHealth);
+        }
+    }
+    private void Heal(int life){
+        if(currentHealth + life >= maxHealth){
+            currentHealth = maxHealth;
+        }else{
+            currentHealth+= life;
+        }
+        healthBar.SetHealth(currentHealth);
     }
 }
 
