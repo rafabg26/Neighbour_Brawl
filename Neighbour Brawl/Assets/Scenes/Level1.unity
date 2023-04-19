@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418a5dd7156258d40bdb441418a7ce3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label: {fileID: 0}
 --- !u!114 &88979033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,9 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7285aaf94f853242a02f868b2bcf0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: {fileID: 2024684209}
-  mainCharacterLife: {fileID: 1955332662}
   timer: {fileID: 203595661}
+  time: 240
 --- !u!4 &88979034
 Transform:
   m_ObjectHideFlags: 0
@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 203595663}
   - component: {fileID: 203595662}
   - component: {fileID: 203595661}
+  - component: {fileID: 203595664}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -589,7 +590,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 120
+  m_Text: 240
 --- !u!222 &203595662
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -618,6 +619,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -201.67017}
   m_SizeDelta: {x: 481.5757, y: 236.5865}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &203595664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203595660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7285aaf94f853242a02f868b2bcf0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 0}
+  time: 240
 --- !u!1 &241344322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,6 +2449,7 @@ MonoBehaviour:
   textDisplayAnim: {fileID: 2136116497}
   protagonist: {fileID: 0}
   granny: {fileID: 0}
+  timer: {fileID: 203595664}
 --- !u!1 &1201490453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,7 +3740,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 2003399517, guid: ba6e2d0e2f40b1e4987c0e74a2469767, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.38, y: 4.6384206}
@@ -3741,7 +3757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786892286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9475031, y: -1.76, z: 0}
+  m_LocalPosition: {x: 14.47, y: -1.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3787,12 +3803,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 29070747}
+  healthBar: {fileID: 1378457625}
+  maxHealth: 100
   moveSpeed: 3
   attackRange: 3
   attackDamage: 10
   attackCooldown: 1
   knockbackDistance: 2
   knockbackDuration: 2
+  maxRegenerationSpan: 5
+  canRegenerate: 0
 --- !u!251 &1786892292
 PlatformEffector2D:
   m_ObjectHideFlags: 0

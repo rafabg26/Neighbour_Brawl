@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private Text timer;
     public float time = 240;
     private bool gameEnded;
+    private bool activeTimer = true;
     void Start(){
         SetTimer(time);
         gameEnded = false;
@@ -15,14 +16,18 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if(!gameEnded)DecreaseTime();
+
+        Debug.Log("DESACTIVE EL TIMER" + activeTimer);
+        if(!gameEnded && activeTimer)DecreaseTime();
     }
 
     public void SetEndMessage(string message){
         gameEnded = true;
         timer.text = message;
     }
-
+    public void SetActiveTimer(bool active){
+        activeTimer = timer;
+    }
     private void SetTimer(float time){
         timer.text = time.ToString("f0");
     }

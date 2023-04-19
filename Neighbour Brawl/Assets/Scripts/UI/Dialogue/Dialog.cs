@@ -16,7 +16,10 @@ public class Dialog : MonoBehaviour
     public GameObject protagonist;
     public GameObject granny;
 
+    public Timer timer;
+
     void Start(){
+        timer.SetActiveTimer(false);
         StartCoroutine(Type());
     }
 

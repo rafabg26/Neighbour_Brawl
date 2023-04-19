@@ -112,8 +112,11 @@ public class EnemyDamaged : MonoBehaviour
         };
     }
 
+//NO FUNCIONA CORRECTAMENTE
     private void  Regenerate(){
-        regenerationSpan -= (int)Time.deltaTime;;
+        float aux = regenerationSpan -  Time.deltaTime;
+        regenerationSpan = (int)aux;
+        Debug.Log(regenerationSpan);
         if(regenerationSpan <= 0){
             regenerationSpan = maxRegenerationSpan;
             Heal(maxHealth);
