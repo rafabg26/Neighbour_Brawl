@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 88979034}
   - component: {fileID: 88979033}
   - component: {fileID: 88979032}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -971,6 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLife: 100
+  mCLife: 100
   countDownReloadLife: 5
   timeSinceLastHit: 0
 --- !u!4 &354478898
@@ -3550,6 +3551,7 @@ GameObject:
   - component: {fileID: 1786892287}
   - component: {fileID: 1786892291}
   - component: {fileID: 1786892290}
+  - component: {fileID: 1786892292}
   m_Layer: 7
   m_Name: Granny
   m_TagString: Untagged
@@ -3637,7 +3639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786892286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9475031, y: -2.080885, z: 0}
+  m_LocalPosition: {x: 0.9475031, y: -1.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3655,9 +3657,9 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.043958187, y: -0.070333004}
+  m_Offset: {x: -0.065464675, y: -0.070333004}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3668,7 +3670,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2920837, y: 4.2867556}
+  m_Size: {x: 1.9909939, y: 4.2867556}
   m_EdgeRadius: 0
 --- !u!114 &1786892291
 MonoBehaviour:
@@ -3682,6 +3684,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8afd25fe109a90489a796e2d62bb325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 29070747}
+  moveSpeed: 3
+  attackRange: 3
+  attackDamage: 10
+  attackCooldown: 1
+  knockbackDistance: 2
+  knockbackDuration: 2
+--- !u!251 &1786892292
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786892286}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1842460365
 GameObject:
   m_ObjectHideFlags: 3
@@ -3868,7 +3896,7 @@ GameObject:
   - component: {fileID: 1944328621}
   - component: {fileID: 1944328620}
   - component: {fileID: 1944328619}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}

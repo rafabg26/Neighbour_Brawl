@@ -23,11 +23,13 @@ public class MainMenu : MonoBehaviour
     }
     public void CargarLevel0()
     {
-        SceneManager.LoadScene("Level0");
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Level0", LoadSceneMode.Single);
     }
     public void CargarLevel1()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
     }
     public void CargarCreditos(){
         menu.SetActive(false);

@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController>
 {
-    
-
     private UIController ui;
 
     private bool _paused;
@@ -33,12 +32,19 @@ public class GameController : Singleton<GameController>
             StartCoroutine(pauseGame(message, 3.0f));
     }
 
-     public void DecreaseEnemyLife(float v){
+    public void DecreaseEnemyLife(float v){
         ui.DecreaseEnemyLife((int) v);
     }
 
+    public void DecreaseMCLife(float v){
+        ui.DecreaseMCLife((int) v);
+    }
+
+
     public void ReloadEnemyLife(){
-        ui.ReloadEnemyLife();
+        if(SceneManager.GetActiveScene().name == "Level0"){
+            ui.ReloadEnemyLife();
+        }
     }
 
     private IEnumerator pauseGame(string message, float waitSeconds ){

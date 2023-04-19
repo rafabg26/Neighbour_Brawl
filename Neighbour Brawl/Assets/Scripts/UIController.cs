@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
         enemyLife.rectTransform.offsetMax = new Vector2(enemyLife.rectTransform.offsetMax.x - hit*10, enemyLife.rectTransform.offsetMax.y);
     }
     public void DecreaseMCLife(int hit){
-        mainCharacterLife.transform.localScale = new Vector3(hit, 1.0f);
+        mainCharacterLife.rectTransform.offsetMax = new Vector2(mainCharacterLife.rectTransform.offsetMax.x - hit*10, mainCharacterLife.rectTransform.offsetMax.y);
     }
     public void ReloadEnemyLife(){
         enemyLife.rectTransform.offsetMax = new Vector2(maxLife, enemyLife.rectTransform.offsetMax.y);
