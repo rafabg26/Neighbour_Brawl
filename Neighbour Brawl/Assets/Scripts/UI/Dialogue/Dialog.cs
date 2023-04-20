@@ -67,7 +67,8 @@ public class Dialog : MonoBehaviour
 
     public void OmitirText(){
        Destroy(dialogueObject); 
-        ActivarMovimiento();
+       timer.SetActiveTimer(true);
+       ActivarMovimiento();
     }
 
     public void ActivarMovimiento(){
