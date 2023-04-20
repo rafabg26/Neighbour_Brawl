@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level0.unity
     guid: bcd52b98ff9d47e489b644d4f0cc3a2d
   - enabled: 1
+    path: Assets/Scenes/Level0Refact.unity
+    guid: 8a6b1b6a2785df94bb8e1b1ef774ccda
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: ffaef165c019b604c8d444cc409b5c9a
   m_configObjects: {}

@@ -18,7 +18,6 @@ public class GameController : Singleton<GameController>
     }
 
     public void EndLevel(string message){
-        Debug.Log("LO HAS MATAO");
         StartCoroutine(pauseGame(message, 3.0f));
     }
 

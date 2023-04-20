@@ -73,17 +73,22 @@ public class CharacterMovement : MonoBehaviour
         } 
 
         //Pegar puñetazo
-        if(Input.GetKeyDown(KeyCode.X) && grounded){
+        if(Input.GetKeyDown(KeyCode.X)){
+            if(grounded){
+                
             _anim.Play("Punch");
             isPunching = true;
+            }
         }
+        
+
         }else {
         // Si el personaje está golpeando, no permite más movimientos
             _body.velocity = new Vector2(0f, _body.velocity.y);
             _body.gravityScale = 0;
         }
         AnimatorStateInfo stateInfo = _anim.GetCurrentAnimatorStateInfo(0);
-        if (stateInfo.IsName("Punch") && stateInfo.normalizedTime >= 1.0f) {
+        if ((stateInfo.IsName("Punch") || stateInfo.IsName("airKick"))&& stateInfo.normalizedTime >= 1.0f) {
             _anim.SetBool("Punch", false);
             isPunching = false;
             FinishPunchAnimation();
