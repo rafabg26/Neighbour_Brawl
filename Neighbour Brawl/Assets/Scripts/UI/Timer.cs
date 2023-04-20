@@ -16,8 +16,6 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-
-        Debug.Log("DESACTIVE EL TIMER" + activeTimer);
         if(!gameEnded && activeTimer)DecreaseTime();
     }
 
@@ -26,7 +24,7 @@ public class Timer : MonoBehaviour
         timer.text = message;
     }
     public void SetActiveTimer(bool active){
-        activeTimer = timer;
+        activeTimer = active;
     }
     private void SetTimer(float time){
         timer.text = time.ToString("f0");

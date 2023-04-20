@@ -10,6 +10,7 @@ public class EnemyDamaged : MonoBehaviour
     private SceneController controller;
     public Transform player;
     public HealthBar healthBar;
+    public PlayerDamage playerDamage;
     public int maxHealth = 100;
     public float moveSpeed = 5f;
     public float attackRange = 2f;
@@ -64,7 +65,7 @@ public class EnemyDamaged : MonoBehaviour
                 anim.SetBool("attacking", true);
                 Invoke(nameof(ResetAttack), 0.5f);
                 //HAY QUE REFACTORIZAR
-                //if (controller.getMCLife() > 0) { controller.DecreaseMCLife(attackDamage); }
+                playerDamage.TakeDamage(10);
 
                 isKnockedBack = true;
                 knockbackEndTime = Time.time + knockbackDuration;

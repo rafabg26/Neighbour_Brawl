@@ -19,6 +19,7 @@ public class Dialog : MonoBehaviour
     public Timer timer;
 
     void Start(){
+        Debug.Log("Estoy aqui");
         timer.SetActiveTimer(false);
         StartCoroutine(Type());
     }
@@ -55,6 +56,7 @@ public class Dialog : MonoBehaviour
             StartCoroutine(Type());
         }else{
             textDisplay.text = "";
+            timer.SetActiveTimer(true);
             Destroy(dialogueObject);
 
             protagonist.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
