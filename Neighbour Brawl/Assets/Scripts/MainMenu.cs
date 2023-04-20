@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
     public void CargarLevel1()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level0Refact", LoadSceneMode.Single);
     }
     public void CargarCreditos(){
         menu.SetActive(false);

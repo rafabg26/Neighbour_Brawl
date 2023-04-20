@@ -32,7 +32,14 @@ public class GameController : Singleton<GameController>
     private IEnumerator pauseGame(string message, float waitSeconds ){
         label.SetEndMessage(message);
         yield return new WaitForSeconds(waitSeconds);
-        Quit();
+        GoToNextScene();
+    }
+    private void GoToNextScene(){
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) {
+            Quit();
+        } else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void Quit(){
