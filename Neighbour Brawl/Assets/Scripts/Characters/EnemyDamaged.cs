@@ -47,7 +47,7 @@ public class EnemyDamaged : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         if(canRegenerate) Regenerate();
-        if (SceneManager.GetActiveScene().name != "Level0")
+        if (SceneManager.GetActiveScene().name != "Level0" && SceneManager.GetActiveScene().name != "Level0Refact")
         {
             float distance = Vector3.Distance(transform.position, player.position);
 
@@ -101,14 +101,14 @@ public class EnemyDamaged : MonoBehaviour
     private void ResetAttack()
     {
         isAttacking = false;
-        anim.SetBool("attacking", false);
+        if(anim != null) anim.SetBool("attacking", false);
          Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
     }
 
     public void Damaged(int damage){
-        anim.SetTrigger("hit");
+        if(anim != null) anim.SetTrigger("hit");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if((int)currentHealth <= 0) {
