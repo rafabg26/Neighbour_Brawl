@@ -11,6 +11,7 @@ public class Dialog : MonoBehaviour
     public float typingSpeed;
     public GameObject dialogueObject;
     public GameObject continueButton;
+    public GameObject omitirButton;
     public Animator textDisplayAnim;
 
     public GameObject protagonist;
@@ -59,9 +60,18 @@ public class Dialog : MonoBehaviour
             timer.SetActiveTimer(true);
             Destroy(dialogueObject);
 
-            protagonist.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            granny.GetComponent<EnemyDamaged>().enabled = true;
+            ActivarMovimiento();
 
         }
+    }
+
+    public void OmitirText(){
+       Destroy(dialogueObject); 
+        ActivarMovimiento();
+    }
+
+    public void ActivarMovimiento(){
+        protagonist.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        granny.GetComponent<EnemyDamaged>().enabled = true;
     }
 }
