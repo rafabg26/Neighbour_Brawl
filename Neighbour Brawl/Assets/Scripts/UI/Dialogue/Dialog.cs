@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Dialog : MonoBehaviour
 {
@@ -28,10 +29,13 @@ public class Dialog : MonoBehaviour
     void Update() {
 
         protagonist = GameObject.Find("MainCharacter");
+        if (SceneManager.GetActiveScene().name != "Level0Refact")
+        {
         granny = GameObject.Find("Granny");
+        granny.GetComponent<EnemyDamaged>().enabled = false;
+        }
 
         protagonist.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        granny.GetComponent<EnemyDamaged>().enabled = false;
 
         if(textDisplay.text == sentences[index]){
             continueButton.SetActive(true);
