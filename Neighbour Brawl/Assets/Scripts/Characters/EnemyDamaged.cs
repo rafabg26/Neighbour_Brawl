@@ -65,7 +65,7 @@ public class EnemyDamaged : MonoBehaviour
                 anim.SetBool("attacking", true);
                 Invoke(nameof(ResetAttack), 0.5f);
                 //HAY QUE REFACTORIZAR
-                playerDamage.TakeDamage(10);
+                playerDamage.TakeDamage(5);
 
                 isKnockedBack = true;
                 knockbackEndTime = Time.time + knockbackDuration;
@@ -73,9 +73,9 @@ public class EnemyDamaged : MonoBehaviour
 
 
                 // Invertir la escala del sprite del enemigo para que mire hacia la dirección en la que retrocede
-                Vector3 scale = transform.localScale;
-                scale.x *= -1;
-                transform.localScale = scale;
+                // Vector3 scale = transform.localScale;
+                // scale.x *= -1;
+                // transform.localScale = scale;
             }
 
             if (isKnockedBack)
@@ -102,6 +102,9 @@ public class EnemyDamaged : MonoBehaviour
     {
         isAttacking = false;
         anim.SetBool("attacking", false);
+         Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     public void Damaged(int damage){
