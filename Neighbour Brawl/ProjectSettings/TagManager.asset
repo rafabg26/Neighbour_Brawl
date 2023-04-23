@@ -7,6 +7,7 @@ TagManager:
   - ground
   - barrel
   - Enemy
+  - door
   layers:
   - Default
   - TransparentFX

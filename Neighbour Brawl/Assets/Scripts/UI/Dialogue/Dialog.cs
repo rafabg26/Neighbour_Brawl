@@ -24,6 +24,8 @@ public class Dialog : MonoBehaviour
         Debug.Log("Estoy aqui");
         timer.SetActiveTimer(false);
         StartCoroutine(Type());
+        
+        continueButton.SetActive(false);
     }
 
     void Update() {

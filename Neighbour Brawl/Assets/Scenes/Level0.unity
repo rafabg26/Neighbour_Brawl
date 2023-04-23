@@ -6530,6 +6530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 29070747}
   healthBar: {fileID: 461631376}
+  playerDamage: {fileID: 0}
   maxHealth: 100
   moveSpeed: 5
   attackRange: 2
