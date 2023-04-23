@@ -51,7 +51,7 @@ public class CharacterMovement : MonoBehaviour
         float deltaX = Input.GetAxis("Horizontal")  * speed;
         Vector2 movement = new Vector2(deltaX, _body.velocity.y);
         _body.velocity = movement;
-        _body.gravityScale = (grounded && Mathf.Approximately(Mathf.Abs(deltaX), 0f)) ? 0 : 1;
+        _body.gravityScale = (grounded && Mathf.Approximately(Mathf.Abs(deltaX), 0f)) ? 0 : 3;
         if (grounded && 
             Input.GetButtonDown("Jump") && getGroundObject.gameObject.CompareTag("ground")) {
             _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
