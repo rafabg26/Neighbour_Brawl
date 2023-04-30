@@ -57,12 +57,6 @@ public class CharacterMovement : MonoBehaviour
             _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
-
-        //Si dejas de pulsar la tecla de flecha izquierda para moverte el personaje se para completamente
-        /*if(Input.GetKeyUp(KeyCode.LeftArrow)){
-            _body.bodyType = RigidbodyType2D.Static;
-        }*/
-
         Vector3 pScale = Vector3.one;
         _anim.SetFloat("speed", Mathf.Abs(deltaX));
         _anim.SetBool("jumping", !grounded);

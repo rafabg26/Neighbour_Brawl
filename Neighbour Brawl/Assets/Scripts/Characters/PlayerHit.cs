@@ -32,6 +32,7 @@ public class PlayerHit : MonoBehaviour
             //Obtener color inicial del objeto golpeado y cambiar a un color rojizo
             colorInicial = other.GetComponent<Renderer>().material.color;
             other.GetComponent<Renderer>().material.color = colorGolpe; 
+
                        
         }
     }
@@ -41,5 +42,7 @@ public class PlayerHit : MonoBehaviour
         //Devolver el objeto golpeado a su color inicial
         collision.GetComponent<Renderer>().material.color = colorInicial;
     }
+
+    
 
 }
