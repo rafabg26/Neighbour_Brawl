@@ -52,8 +52,7 @@ public class CharacterMovement : MonoBehaviour
         Vector2 movement = new Vector2(deltaX, _body.velocity.y);
         _body.velocity = movement;
         _body.gravityScale = (grounded && Mathf.Approximately(Mathf.Abs(deltaX), 0f)) ? 0 : 3;
-        if (grounded && 
-            Input.GetButtonDown("Jump") && getGroundObject.gameObject.CompareTag("ground")) {
+        if (grounded && Input.GetButtonDown("Jump") && getGroundObject.gameObject.CompareTag("ground")) {
             _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
@@ -80,6 +79,14 @@ public class CharacterMovement : MonoBehaviour
             isPunching = true;
             }
         }
+
+        //Pegar puñetazo
+        if(Input.GetKeyDown(KeyCode.C)){
+            if(grounded){
+                
+            _anim.SetTrigger("Kick");
+            }
+        }
         
 
         }else {
@@ -88,7 +95,7 @@ public class CharacterMovement : MonoBehaviour
             _body.gravityScale = 0;
         }
         AnimatorStateInfo stateInfo = _anim.GetCurrentAnimatorStateInfo(0);
-        if ((stateInfo.IsName("Punch") || stateInfo.IsName("airKick"))&& stateInfo.normalizedTime >= 1.0f) {
+        if (stateInfo.IsName("Punch") && stateInfo.normalizedTime >= 1.0f) {
             _anim.SetBool("Punch", false);
             isPunching = false;
             FinishPunchAnimation();
