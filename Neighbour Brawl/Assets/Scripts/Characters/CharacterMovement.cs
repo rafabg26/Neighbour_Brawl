@@ -43,6 +43,8 @@ public class CharacterMovement : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _box = GetComponent<BoxCollider2D>();
+
+        transform.localScale = new Vector3(-1, 1, 1);
     }
 
     // Update is called once per frame

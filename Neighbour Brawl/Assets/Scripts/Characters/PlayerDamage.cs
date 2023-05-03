@@ -27,8 +27,6 @@ public class PlayerDamage : MonoBehaviour
         colorInicial = GetComponent<Renderer>().material.color;
         healthBar.SetMaxHealth(maxHealth);
 
-        transform.localScale = new Vector3(-1, 1, 1);
-
     }
     public void TakeDamage(int damage){
 
