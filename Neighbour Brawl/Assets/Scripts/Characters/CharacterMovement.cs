@@ -105,13 +105,5 @@ public class CharacterMovement : MonoBehaviour
         isPunching = false;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            // Código que se ejecutará cuando haya una colisión con el personaje
-            Debug.Log("Funciona");
-        }
-    }
 
 }
