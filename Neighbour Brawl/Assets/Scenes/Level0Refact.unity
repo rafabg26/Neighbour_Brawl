@@ -2990,10 +2990,10 @@ MonoBehaviour:
   typingSpeed: 0.02
   dialogueObject: {fileID: 554156840}
   continueButton: {fileID: 749715746}
-  omitirButton: {fileID: 0}
+  omitirButton: {fileID: 984364182}
   textDisplayAnim: {fileID: 2136116497}
   protagonist: {fileID: 29070744}
-  granny: {fileID: 0}
+  granny: {fileID: 6497465795374116755, guid: c4adb068edf59a546a901f6e75d703fb, type: 3}
   timer: {fileID: 203595664}
 --- !u!1 &1201490453
 GameObject:
