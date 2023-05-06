@@ -50,6 +50,7 @@ public class PlayerDamage : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if(currentHealth <= 0){
+            _anim.SetTrigger("Die");
             GameController.Instance.EndLevel("YOU LOSE");
         }
     }
