@@ -20,6 +20,8 @@ public class EnemyDamaged : MonoBehaviour
     public float knockbackDuration = 1f;
     public int maxRegenerationSpan = 5;
     public bool canRegenerate = false;
+    public float retreatRange = 3.5f;
+
 
     private int currentHealth;
     private int regenerationSpan;
@@ -50,54 +52,123 @@ public class EnemyDamaged : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Level0" && SceneManager.GetActiveScene().name != "Level0Refact")
         {
             float distance = Vector3.Distance(transform.position, player.position);
-
-            if (!isKnockedBack && distance > attackRange)
+            if (currentHealth > maxHealth * 0.6f)
             {
-                moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
-                transform.position += moveDirection * moveSpeed * Time.deltaTime;
-            }
-
-            // Ataque del enemigo al jugador           
-            if (distance < attackRange && Time.time > nextAttackTime && !isAttacking)
-            {
-                nextAttackTime = Time.time + attackCooldown;
-                isAttacking = true;
-                anim.SetBool("attacking", true);
-                Invoke(nameof(ResetAttack), 0.5f);
-                //HAY QUE REFACTORIZAR
-                playerDamage.TakeDamage(5);
-
-                isKnockedBack = true;
-                knockbackEndTime = Time.time + knockbackDuration;
-                knockbackDirection = new Vector3(-Mathf.Sign(moveDirection.x), 0, 0);
-
-
-                // Invertir la escala del sprite del enemigo para que mire hacia la dirección en la que retrocede
-                // Vector3 scale = transform.localScale;
-                // scale.x *= -1;
-                // transform.localScale = scale;
-            }
-
-            if (isKnockedBack)
-            {
-                if (Time.time < knockbackEndTime)
+                // Comportamiento del enemigo cuando su salud es mayor al 60%
+                if (!isKnockedBack && distance > attackRange)
                 {
-                    transform.position += knockbackDirection * moveSpeed * Time.deltaTime;
+                    moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+                    transform.position += moveDirection * moveSpeed * Time.deltaTime;
+                }
+
+                if (distance < attackRange && Time.time > nextAttackTime && !isAttacking)
+                {
+                    nextAttackTime = Time.time + attackCooldown;
+                    isAttacking = true;
+                    anim.SetBool("attacking", true);
+                    Invoke(nameof(ResetAttack), 0.5f);
+                    playerDamage.TakeDamage(5);
+
+                    isKnockedBack = true;
+                    knockbackEndTime = Time.time + knockbackDuration;
+                    knockbackDirection = new Vector3(-Mathf.Sign(moveDirection.x), 0, 0);
+
+                    //Vector3 scale = transform.localScale;
+                    //scale.x *= -1;
+                    //transform.localScale = scale;
+                }
+
+                if (isKnockedBack)
+                {
+                    if (Time.time < knockbackEndTime)
+                    {
+                        transform.position += knockbackDirection * moveSpeed * Time.deltaTime;
+                    }
+                    else
+                    {
+                        isKnockedBack = false;
+                        moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+
+                        Vector3 scale = transform.localScale;
+                        scale.x *= -1;
+                        transform.localScale = scale;
+                    }
+                }   
+                else
+                {
+                    // Comportamiento del enemigo después de atacar al jugador
+                    if (Time.time > nextAttackTime && !isAttacking)
+                    {
+                        moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+                        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+                    }
+                }
+            }
+            else if (currentHealth > maxHealth * 0.3f) 
+            {
+                // Comportamiento del enemigo cuando su salud está entre el 30% y el 60%
+                if (distance < attackRange && Time.time > nextAttackTime && !isAttacking)
+                {
+                    nextAttackTime = Time.time + attackCooldown;
+                    isAttacking = true;
+                    anim.SetBool("attacking", true);
+                    Invoke(nameof(ResetAttack), 0.5f);
+                    playerDamage.TakeDamage(10);
+
+                    isKnockedBack = true;
+                    knockbackEndTime = Time.time + knockbackDuration;
+                    knockbackDirection = new Vector3(-Mathf.Sign(moveDirection.x), 0, 0);
+
+                    //Vector3 scale = transform.localScale;
+                    //scale.x *= -1;
+                    //transform.localScale = scale;
                 }
                 else
                 {
-                    isKnockedBack = false;
-                    moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+                    if (isKnockedBack)
+                    {
+                        if (Time.time < knockbackEndTime)
+                        {
+                            transform.position += knockbackDirection * moveSpeed * Time.deltaTime;
+                        }
+                        else
+                        {
+                            isKnockedBack = false;
+                            moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
 
-                    // Invertir la escala del sprite del enemigo para que mire hacia la dirección en la que avanza
-                    Vector3 scale = transform.localScale;
-                    scale.x *= -1;
-                    transform.localScale = scale;
+                            Vector3 scale = transform.localScale;
+                            scale.x *= -1;
+                            transform.localScale = scale;
+                        }
+                    }
+                    else if (distance < retreatRange)
+                    {
+                        moveDirection = new Vector3(-Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+                        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+                    }
+                    else if (distance > attackRange)
+                    {
+                        moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+                        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+                    }
+                }
+            }
+            else
+            {
+                // Comportamiento del enemigo cuando su salud es menor al 30%
+                if (distance < retreatRange)
+                {
+                    moveDirection = new Vector3(-Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+                    transform.position += moveDirection * moveSpeed * Time.deltaTime;
+                }
+                else if (distance > attackRange)
+                {
+                    moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+                    transform.position += moveDirection * moveSpeed * Time.deltaTime;
                 }
             }
         }
     }
-
     private void ResetAttack()
     {
         isAttacking = false;
