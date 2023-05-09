@@ -12,6 +12,8 @@ public class CharacterMovement : MonoBehaviour
     private BoxCollider2D _box;
     private bool isPunching = false;
 
+    public bool isBlocking = false;
+
     private (Vector2, Vector2) getGroundCheckCorners() {
         Vector3 max = _box.bounds.max;
         Vector3 min = _box.bounds.min;
@@ -58,12 +60,6 @@ public class CharacterMovement : MonoBehaviour
             _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
-
-        //Si dejas de pulsar la tecla de flecha izquierda para moverte el personaje se para completamente
-        /*if(Input.GetKeyUp(KeyCode.LeftArrow)){
-            _body.bodyType = RigidbodyType2D.Static;
-        }*/
-
         Vector3 pScale = Vector3.one;
         _anim.SetFloat("speed", Mathf.Abs(deltaX));
         _anim.SetBool("jumping", !grounded);
@@ -82,12 +78,28 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
-        //Pegar puñetazo
+        //Pegar patada
         if(Input.GetKeyDown(KeyCode.C)){
-            if(grounded){
-                
-            _anim.SetTrigger("Kick");
+            if(grounded){               
+                _anim.SetTrigger("Kick");
+                _body.velocity = Vector2.zero;
             }
+        }
+
+        
+        //Bloquear
+        if(Input.GetKey(KeyCode.B)){
+            if(grounded){                
+                _anim.SetTrigger("Block");
+                isBlocking = true;
+                _body.bodyType = RigidbodyType2D.Static;
+            }
+        }
+
+        if(Input.GetKeyUp(KeyCode.B)){
+            isBlocking = false;
+            _body.bodyType = RigidbodyType2D.Dynamic;
+            _anim.SetTrigger("ToIdle");
         }
         
 

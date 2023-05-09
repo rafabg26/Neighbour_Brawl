@@ -11,6 +11,8 @@ public class PlayerHit : MonoBehaviour
     private Color colorInicial;
     public Color colorGolpe = new Color(1f, 0.5f, 0.5f); // Define el color de golpe
 
+    public int dañoGolpe;
+
     void Start()
     {
         
@@ -26,7 +28,7 @@ public class PlayerHit : MonoBehaviour
     // a la animación de la clase del barril
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.layer == LayerMask.NameToLayer("Enemies")){
-            other.GetComponent<EnemyDamaged>().Damaged(10);
+            other.GetComponent<EnemyDamaged>().Damaged(dañoGolpe);
             
 
             //Obtener color inicial del objeto golpeado y cambiar a un color rojizo

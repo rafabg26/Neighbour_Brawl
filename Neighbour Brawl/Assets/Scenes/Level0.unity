@@ -230,6 +230,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1497645273}
+  - {fileID: 126089982}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -268,6 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4.5
   jumpForce: 10
+  isBlocking: 0
 --- !u!61 &29070750
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -515,6 +517,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125441200}
   m_CullTransparentMesh: 1
+--- !u!1 &126089981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126089982}
+  - component: {fileID: 126089984}
+  - component: {fileID: 126089983}
+  m_Layer: 6
+  m_Name: KickHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &126089982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126089981}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.77, y: 1.69, z: 0}
+  m_LocalScale: {x: 1.3561758, y: 1.3561758, z: 1.3561758}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 29070747}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126089983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126089981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad512c4775d744e4cac972289f39fb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorGolpe: {r: 1, g: 0.5, b: 0.5, a: 1}
+  "da\xF1oGolpe": 13
+--- !u!61 &126089984
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126089981}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.05336219, y: 0.04446867}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1067244, y: 1.0889373}
+  m_EdgeRadius: 0
 --- !u!4 &289094512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1188361944005520230, guid: e7ad76bd304dbed4dad2f02990154a0d, type: 3}
@@ -3059,7 +3134,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 29070751}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: GoToMainMenu
         m_Mode: 1
@@ -4487,7 +4562,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 29070747}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -5151,6 +5226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad512c4775d744e4cac972289f39fb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorGolpe: {r: 1, g: 0.5, b: 0.5, a: 1}
+  "da\xF1oGolpe": 10
 --- !u!1 &1499008830
 GameObject:
   m_ObjectHideFlags: 0
@@ -6292,7 +6369,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 29070751}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -6528,7 +6605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8afd25fe109a90489a796e2d62bb325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 29070747}
+  player: {fileID: 0}
   healthBar: {fileID: 461631376}
   playerDamage: {fileID: 0}
   maxHealth: 100
@@ -6540,6 +6617,7 @@ MonoBehaviour:
   knockbackDuration: 1
   maxRegenerationSpan: 5
   canRegenerate: 0
+  retreatRange: 3.5
 --- !u!50 &2098792424
 Rigidbody2D:
   serializedVersion: 4

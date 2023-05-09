@@ -17,6 +17,7 @@ public class PlayerDamage : MonoBehaviour
     private Color colorInicial;
     public Color colorGolpe = new Color(1f, 0.5f, 0.5f); // Define el color de golpe
     
+    public bool isBlocking;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +29,19 @@ public class PlayerDamage : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
 
     }
+
+    void Update(){
+        isBlocking = GetComponent<CharacterMovement>().isBlocking;
+    }
+
     public void TakeDamage(int damage){
 
         if(IsTouchingGround()){
 
         _body.velocity = new Vector2(0,0);
         _anim.ResetTrigger("Punch");
-        _anim.SetTrigger("Damaged");
+
+        if(!isBlocking) _anim.SetTrigger("Damaged");
         StopCoroutine("HitCoroutine"); 
         StartCoroutine("HitCoroutine");
 
@@ -64,7 +71,7 @@ public class PlayerDamage : MonoBehaviour
         _body.gravityScale = 0f;
         
         // Mover hacia atrás en la dirección opuesta a la que está mirando
-        float moveDistance = 0.5f;
+        float moveDistance = isBlocking? 1.5f : 0.5f;
         float moveTime = 0.1f;
         float originalX = transform.position.x;
         float moveDirection = transform.localScale.x < 0 ? -1 : 1;
@@ -88,14 +95,21 @@ public class PlayerDamage : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+
+        int damage = 15;
+
         if (col.gameObject.CompareTag("Enemy"))
         {
-            // Código que se ejecutará cuando haya una colisión con el personaje
-            TakeDamage(10);
+            if(isBlocking){
+                damage = Mathf.RoundToInt(damage * 0.50f);
 
-            colorInicial = GetComponent<Renderer>().material.color;
-            GetComponent<Renderer>().material.color = colorGolpe;
+            } else {
 
+                GetComponent<Renderer>().material.color = colorGolpe;
+
+            }
+
+            TakeDamage(damage);
             StartCoroutine("HitCoroutine");
             
         }
