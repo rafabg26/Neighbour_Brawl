@@ -18,11 +18,14 @@ public class Dialog : MonoBehaviour
     public GameObject protagonist;
     public GameObject granny;
 
-    public Timer timer;
+    private GameObject timer;
+    private Timer _timer;
 
     void Start(){
-        Debug.Log("Estoy aqui");
-        timer.SetActiveTimer(false);
+        timer = GameObject.Find("Timer");
+        _timer = timer.GetComponent<Timer>();
+        _timer.SetActiveTimer(false);
+        _timer.ResetTime(240);
         StartCoroutine(Type());
         
         continueButton.SetActive(false);
@@ -63,7 +66,7 @@ public class Dialog : MonoBehaviour
             StartCoroutine(Type());
         }else{
             textDisplay.text = "";
-            timer.SetActiveTimer(true);
+            _timer.SetActiveTimer(true);
             Destroy(dialogueObject);
 
             ActivarMovimiento();
@@ -73,7 +76,7 @@ public class Dialog : MonoBehaviour
 
     public void OmitirText(){
        Destroy(dialogueObject); 
-       timer.SetActiveTimer(true);
+       _timer.SetActiveTimer(true);
        ActivarMovimiento();
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoaderScript : MonoBehaviour
 {
     public Animator transition;
-    static int lastSceneIndex;
+    private int lastSceneIndex;
     
     public void LoadSceneByName(string name){
         lastSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -41,12 +41,12 @@ public class LevelLoaderScript : MonoBehaviour
             if(lastSceneIndex==2){
                 Debug.Log("El último índice es igual a 2");
                 //Cargamos el nivel de la abuela
-                LoadLevelByName("Level1");
+                LoadSceneByName("Level1");
             //Esto significaría que hemos vencido a la abuela
             }else{
                 Debug.Log("Estamos en main menu");
                 //Y podriamos volver al principio
-                LoadLevelByName("MainMenu");
+                LoadSceneByName("MainMenu");
             }
         }
     }

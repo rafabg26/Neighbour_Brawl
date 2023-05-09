@@ -31,6 +31,7 @@ public class EnemyDamaged : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 knockbackDirection = Vector3.zero;
     private float knockbackEndTime = 0f;
+    private bool isDead = false;
 
 
 
@@ -182,7 +183,8 @@ public class EnemyDamaged : MonoBehaviour
         if(anim != null) anim.SetTrigger("hit");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if((int)currentHealth <= 0) {
+        if((int)currentHealth <= 0 && !isDead) {
+            isDead = true;
             GameController.Instance.EndLevel(true);
         };
     }

@@ -43,6 +43,7 @@ public class GameController : Singleton<GameController>
         }else if(message == "You lose"){
             levelLoader.LoadSceneByName("YouLose");
         }
+        label.SetEndMessage("");
     }
     private void GoToNextScene(){
         Debug.Log("ME TRIGUEREÉ");
