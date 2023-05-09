@@ -11,8 +11,8 @@ public class PlayerDamage : MonoBehaviour
     private int currentHealth;
     private Animator _anim;
     private Timer label;
-
     public bool _canBeHit;
+    private bool isAlive=true;
 
     private Color colorInicial;
     public Color colorGolpe = new Color(1f, 0.5f, 0.5f); // Define el color de golpe
@@ -56,9 +56,10 @@ public class PlayerDamage : MonoBehaviour
 
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if(currentHealth <= 0){
+        if(currentHealth <= 0 && isAlive){
+            isAlive = false;
             _anim.SetTrigger("Die");
-            GameController.Instance.EndLevel("YOU LOSE");
+            GameController.Instance.EndLevel(false);
         }
     }
 

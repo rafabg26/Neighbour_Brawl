@@ -23,7 +23,7 @@ public class EnemyDamaged : MonoBehaviour
     public float retreatRange = 3.5f;
 
 
-    private int currentHealth;
+    public int currentHealth;
     private int regenerationSpan;
     private bool isAttacking = false;
     private float nextAttackTime = 0f;
@@ -183,7 +183,7 @@ public class EnemyDamaged : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if((int)currentHealth <= 0) {
-            GameController.Instance.EndLevel("YOU WIN");
+            GameController.Instance.EndLevel(true);
         };
     }
 

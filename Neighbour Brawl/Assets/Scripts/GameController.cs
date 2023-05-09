@@ -7,6 +7,7 @@ public class GameController : Singleton<GameController>
 {
 
     public Timer label;
+    public LevelLoaderScript levelLoader;
     private bool _paused;
     public bool paused {
         get { return _paused; }
@@ -17,8 +18,13 @@ public class GameController : Singleton<GameController>
         }
     }
 
-    public void EndLevel(string message){
-        StartCoroutine(pauseGame(message, 3.0f));
+    public void EndLevel(bool didWin){
+        if(didWin){
+            StartCoroutine(pauseGame("You win", 1.0f));
+
+        }else{
+            StartCoroutine(pauseGame("You lose", 1.0f));
+        }
     }
 
 
@@ -31,14 +37,22 @@ public class GameController : Singleton<GameController>
     private IEnumerator pauseGame(string message, float waitSeconds ){
         label.SetEndMessage(message);
         yield return new WaitForSeconds(waitSeconds);
-        GoToNextScene();
+        if(message == "You win"){
+            levelLoader.LoadSceneByName("YouWin");
+        }else if(message == "You lose"){
+            levelLoader.LoadSceneByName("YouLose");
+        }
     }
     private void GoToNextScene(){
-        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) {
-            Quit();
-        } else {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        Debug.Log("ME TRIGUEREÉ");
+        // if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) {
+        //     Quit();
+        // } else {
+        //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // }
+    }
+    private void LoadWinOrLoseScreen(){
+        
     }
 
     public void Quit(){

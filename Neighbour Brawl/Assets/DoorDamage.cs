@@ -28,7 +28,7 @@ public class DoorDamage : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if((int)currentHealth <= 0) {
-            GameController.Instance.EndLevel("YOU WIN");
+            GameController.Instance.EndLevel(true);
         };
     }
 
