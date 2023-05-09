@@ -26,6 +26,11 @@ public class Timer : MonoBehaviour
     public void SetActiveTimer(bool active){
         activeTimer = active;
     }
+    public void ResetTime(float time){
+        gameEnded = false;
+        this.time = time;
+        timer.text = time.ToString("f0");
+    }
     private void SetTimer(float time){
         timer.text = time.ToString("f0");
     }

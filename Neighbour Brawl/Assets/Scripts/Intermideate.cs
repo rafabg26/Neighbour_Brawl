@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Intermideate : MonoBehaviour
 {
+    public Timer label;
     public LevelLoaderScript levelLoader;
     // Update is called once per frame
     void Update()
@@ -16,6 +17,7 @@ public class Intermideate : MonoBehaviour
                 if (!Input.GetKeyDown(KeyCode.Escape))
                 {
                     levelLoader.NextOrRestart();
+                    label.ResetTime(240);
                 }
             }
         }

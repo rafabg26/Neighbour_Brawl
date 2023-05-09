@@ -37,6 +37,7 @@ public class GameController : Singleton<GameController>
     private IEnumerator pauseGame(string message, float waitSeconds ){
         label.SetEndMessage(message);
         yield return new WaitForSeconds(waitSeconds);
+        
         if(message == "You win"){
             levelLoader.LoadSceneByName("YouWin");
         }else if(message == "You lose"){
@@ -51,9 +52,7 @@ public class GameController : Singleton<GameController>
         //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         // }
     }
-    private void LoadWinOrLoseScreen(){
-        
-    }
+   
 
     public void Quit(){
         #if UNITY_EDITOR
