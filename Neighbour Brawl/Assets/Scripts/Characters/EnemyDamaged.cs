@@ -35,7 +35,6 @@ public class EnemyDamaged : MonoBehaviour
 
 
 
-
     // Start is called before the first frame update
     public void Start()
     {
@@ -185,8 +184,10 @@ public class EnemyDamaged : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if((int)currentHealth <= 0 && !isDead) {
             isDead = true;
+            if(SceneManager.GetActiveScene().name == "Level0Refact") Destroy(GameObject.Find("ObjectSpawn"));
             GameController.Instance.EndLevel(true);
         };
+        
     }
 
 //NO FUNCIONA CORRECTAMENTE

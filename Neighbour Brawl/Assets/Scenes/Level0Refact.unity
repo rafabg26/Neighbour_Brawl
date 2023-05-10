@@ -3361,7 +3361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorGolpe: {r: 1, g: 0.5, b: 0.5, a: 1}
-  "da\xF1oGolpe": 13
+  "da\xF1oGolpe": 10
 --- !u!61 &1337762930
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3827,6 +3827,7 @@ MonoBehaviour:
   canRegenerate: 0
   retreatRange: 3.5
   currentHealth: 0
+  _body: {fileID: 29070748}
 --- !u!212 &1442654986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4083,7 +4084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorGolpe: {r: 1, g: 0.5, b: 0.5, a: 1}
-  "da\xF1oGolpe": 10
+  "da\xF1oGolpe": 7
 --- !u!1 &1498030941
 GameObject:
   m_ObjectHideFlags: 0
