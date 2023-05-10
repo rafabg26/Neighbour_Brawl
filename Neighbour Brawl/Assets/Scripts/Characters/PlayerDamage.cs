@@ -47,18 +47,20 @@ public class PlayerDamage : MonoBehaviour
 
         } else {
 
+            Debug.Log("Llega");
             GetComponent<Renderer>().material.color = colorGolpe; 
             StartCoroutine(Espera());  // Agrega una corutina para devolver el color a su valor inicial después de un tiempo
 
         }
 
-        GetComponent<Renderer>().material.color = colorInicial;
+        //GetComponent<Renderer>().material.color = colorInicial;
 
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if(currentHealth <= 0 && isAlive){
             isAlive = false;
             _anim.SetTrigger("Die");
+            Destroy(_body);
             GameController.Instance.EndLevel(false);
         }
     }
@@ -123,6 +125,6 @@ public class PlayerDamage : MonoBehaviour
     }
 
     private IEnumerator Espera() {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1f);
     }
 }
