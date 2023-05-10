@@ -125,6 +125,7 @@ public class PlayerDamage : MonoBehaviour
     }
 
     private IEnumerator Espera() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<Renderer>().material.color = colorInicial;
     }
 }
