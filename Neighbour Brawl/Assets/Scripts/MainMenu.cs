@@ -13,6 +13,12 @@ public class MainMenu : MonoBehaviour
         menu.SetActive(false);
         creditsMenu.SetActive(false);
     }
+    void Update(){
+        if(Input.anyKeyDown && splash.activeInHierarchy)
+            {
+                SplashAMenu();
+            }
+    }
     public void Salir()
     {
         #if UNITY_EDITOR
