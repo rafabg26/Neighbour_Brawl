@@ -184,6 +184,7 @@ public class EnemyDamaged : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if((int)currentHealth <= 0 && !isDead) {
             isDead = true;
+            anim.SetTrigger("Die");
             if(SceneManager.GetActiveScene().name == "Level0Refact") Destroy(GameObject.Find("ObjectSpawn"));
             GameController.Instance.EndLevel(true);
         };
