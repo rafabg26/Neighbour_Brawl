@@ -39,6 +39,12 @@ public class SceneController : MonoBehaviour
         //     GameController.Instance.SetTimer(timer);
         // }
 
+        if(SceneManager.GetActiveScene().name == "Level0Refact"){
+            if(enemyLife == 0){
+                 SceneManager.LoadScene("YouWin", LoadSceneMode.Additive);
+            }
+        }
+
         if(sceneChanged){
             enemyLife = 100;
         }
