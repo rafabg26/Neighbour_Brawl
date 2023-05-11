@@ -51,6 +51,7 @@ public class EnemyDamaged : MonoBehaviour
         if(canRegenerate) Regenerate();
         if (SceneManager.GetActiveScene().name != "Level0" && SceneManager.GetActiveScene().name != "Level0Refact")
         {
+            if(isDead) return;
             float distance = Vector3.Distance(transform.position, player.position);
             
             // Comportamiento del enemigo cuando su salud es mayor al 60%
