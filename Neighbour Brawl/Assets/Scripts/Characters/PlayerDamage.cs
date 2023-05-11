@@ -48,7 +48,7 @@ public class PlayerDamage : MonoBehaviour
         } else {
 
             Debug.Log("Llega");
-            GetComponent<Renderer>().material.color = colorGolpe; 
+            if(!isBlocking) GetComponent<Renderer>().material.color = colorGolpe; 
             StartCoroutine(Espera());  // Agrega una corutina para devolver el color a su valor inicial después de un tiempo
 
         }

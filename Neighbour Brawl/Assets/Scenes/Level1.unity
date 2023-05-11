@@ -3663,7 +3663,7 @@ MonoBehaviour:
   maxHealth: 100
   moveSpeed: 3
   attackRange: 3
-  attackDamage: 20
+  attackDamage: 15
   attackCooldown: 1
   knockbackDistance: 2
   knockbackDuration: 2
