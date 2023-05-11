@@ -33,8 +33,6 @@ public class EnemyDamaged : MonoBehaviour
     private float knockbackEndTime = 0f;
     private bool isDead = false;
 
-
-
     // Start is called before the first frame update
     public void Start()
     {
@@ -42,11 +40,13 @@ public class EnemyDamaged : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         anim = GetComponent<Animator>();
         if(canRegenerate) Regenerate();
         if (SceneManager.GetActiveScene().name != "Level0" && SceneManager.GetActiveScene().name != "Level0Refact")
@@ -80,7 +80,6 @@ public class EnemyDamaged : MonoBehaviour
                 else
                 {
                     playerDamage.TakeDamage(10);
-                    moveSpeed = 7f;
                 }
                 
                 isKnockedBack = true;
@@ -135,6 +134,7 @@ public class EnemyDamaged : MonoBehaviour
         if((int)currentHealth <= 0 && !isDead) {
             isDead = true;
             anim.SetTrigger("Die");
+            if(SceneManager.GetActiveScene().name == "Level1") moveSpeed = 0f;
             if(SceneManager.GetActiveScene().name == "Level0Refact") Destroy(GameObject.Find("ObjectSpawn"));
             GameController.Instance.EndLevel(true);
         };
