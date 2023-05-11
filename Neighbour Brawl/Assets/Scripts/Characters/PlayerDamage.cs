@@ -60,7 +60,7 @@ public class PlayerDamage : MonoBehaviour
         if(currentHealth <= 0 && isAlive){
             isAlive = false;
             _anim.SetTrigger("Die");
-            Destroy(_body);
+            //Destroy(_body);
             GameController.Instance.EndLevel(false);
         }
     }
