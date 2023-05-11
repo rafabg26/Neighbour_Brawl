@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4.96
   jumpForce: 24
-  clip: {fileID: 8300000, guid: c36f0d8bf7e47f64595229842469d91e, type: 3}
+  punch: {fileID: 8300000, guid: c36f0d8bf7e47f64595229842469d91e, type: 3}
   isBlocking: 0
 --- !u!114 &2340411972224126267
 MonoBehaviour:
@@ -277,6 +277,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   maxHealth: 100
   _canBeHit: 0
+  hurt: {fileID: 8300000, guid: 53fd6b62086c36e4f89edd22f374a718, type: 3}
   colorGolpe: {r: 1, g: 0.5, b: 0.5, a: 1}
   isBlocking: 0
 --- !u!82 &-1960340564863825962

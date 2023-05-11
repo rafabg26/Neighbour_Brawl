@@ -13,6 +13,8 @@ public class PlayerDamage : MonoBehaviour
     private Timer label;
     public bool _canBeHit;
     private bool isAlive=true;
+    private AudioSource _source;
+    public AudioClip hurt;
 
     private Color colorInicial;
     public Color colorGolpe = new Color(1f, 0.5f, 0.5f); // Define el color de golpe
@@ -24,6 +26,7 @@ public class PlayerDamage : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _body = GetComponent<Rigidbody2D>();
+        _source = GetComponent<AudioSource>();
         currentHealth = maxHealth;
         colorInicial = GetComponent<Renderer>().material.color;
         healthBar.SetMaxHealth(maxHealth);
@@ -41,7 +44,11 @@ public class PlayerDamage : MonoBehaviour
         _body.velocity = new Vector2(0,0);
         _anim.ResetTrigger("Punch");
 
-        if(!isBlocking) _anim.SetTrigger("Damaged");
+        if(!isBlocking) {
+            _anim.SetTrigger("Damaged");
+            _source.clip = hurt;
+            _source.Play();    
+        }
         StopCoroutine("HitCoroutine"); 
         StartCoroutine("HitCoroutine");
 

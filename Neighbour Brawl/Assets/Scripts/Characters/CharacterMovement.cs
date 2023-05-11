@@ -87,6 +87,8 @@ public class CharacterMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.C)){
             if(grounded){               
                 _anim.SetTrigger("Kick");
+                _source.clip = punch;
+                _source.Play();
                 _body.velocity = Vector2.zero;
             }
         }

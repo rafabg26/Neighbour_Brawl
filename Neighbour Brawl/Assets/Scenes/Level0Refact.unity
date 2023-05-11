@@ -313,6 +313,7 @@ MonoBehaviour:
   healthBar: {fileID: 1902442928}
   maxHealth: 100
   _canBeHit: 0
+  hurt: {fileID: 8300000, guid: 53fd6b62086c36e4f89edd22f374a718, type: 3}
   colorGolpe: {r: 1, g: 0.5, b: 0.5, a: 1}
   isBlocking: 0
 --- !u!82 &29070753
