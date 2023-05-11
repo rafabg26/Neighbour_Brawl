@@ -104,7 +104,7 @@ public class PlayerDamage : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy"))
         {
             if(isBlocking){
-                damage = Mathf.RoundToInt(damage * 0.50f);
+                damage = Mathf.RoundToInt(damage * 0.10f);
 
             } else {
 

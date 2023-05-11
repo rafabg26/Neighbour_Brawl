@@ -102,9 +102,9 @@ public class EnemyDamaged : MonoBehaviour
                     isKnockedBack = false;
                     moveDirection = new Vector3(Mathf.Sign(player.position.x - transform.position.x), 0, 0);
 
-                    Vector3 scale = transform.localScale;
-                    scale.x *= -1;
-                    transform.localScale = scale;
+                    // Vector3 scale = transform.localScale;
+                    // scale.x *= -1;
+                    // transform.localScale = scale;
                 }
             }   
             else
@@ -122,9 +122,9 @@ public class EnemyDamaged : MonoBehaviour
     {
         isAttacking = false;
         if(anim != null) anim.SetBool("attacking", false);
-         Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        //  Vector3 scale = transform.localScale;
+        // scale.x *= -1;
+        // transform.localScale = scale;
     }
 
     public void Damaged(int damage){
