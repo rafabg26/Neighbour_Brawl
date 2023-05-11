@@ -11,6 +11,8 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     private BoxCollider2D _box;
     private bool isPunching = false;
+    private AudioSource _source;
+    public AudioClip punch;
 
     public bool isBlocking = false;
 
@@ -45,6 +47,7 @@ public class CharacterMovement : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _box = GetComponent<BoxCollider2D>();
+        _source = GetComponent<AudioSource>();
 
         transform.localScale = new Vector3(-1, 1, 1);
     }
@@ -74,6 +77,8 @@ public class CharacterMovement : MonoBehaviour
             if(grounded){
                 
             _anim.Play("Punch");
+            _source.clip = punch;
+            _source.Play();
             isPunching = true;
             }
         }

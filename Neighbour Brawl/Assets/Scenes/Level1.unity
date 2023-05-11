@@ -5020,6 +5020,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1902442928}
     - target: {fileID: 2340411972224126265, guid: ea059943ad0a5ce408f514b5e5e439b3, type: 3}
+      propertyPath: punch
+      value: 
+      objectReference: {fileID: 8300000, guid: c36f0d8bf7e47f64595229842469d91e, type: 3}
+    - target: {fileID: 2340411972224126265, guid: ea059943ad0a5ce408f514b5e5e439b3, type: 3}
       propertyPath: jumpForce
       value: 15
       objectReference: {fileID: 0}
