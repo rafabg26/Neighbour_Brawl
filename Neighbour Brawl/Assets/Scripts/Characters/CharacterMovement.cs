@@ -88,7 +88,7 @@ public class CharacterMovement : MonoBehaviour
 
         
         //Bloquear
-        if(Input.GetKey(KeyCode.B)){
+        if(Input.GetKey(KeyCode.V)){
             if(grounded){                
                 _anim.SetTrigger("Block");
                 isBlocking = true;
@@ -96,7 +96,7 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyUp(KeyCode.B)){
+        if(Input.GetKeyUp(KeyCode.V)){
             isBlocking = false;
             _body.bodyType = RigidbodyType2D.Dynamic;
             _anim.SetTrigger("ToIdle");
